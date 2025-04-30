@@ -15,10 +15,10 @@
         </config-file>
 
         <!-- Java Dependencies from hxjlib folder -->
-        <source-file src="src/android/hxjlib/classes.jar" target-dir="libs" />
-        <source-file src="src/android/hxjlib/jdk9-deps-1.0.jar" target-dir="libs" />
-        <source-file src="src/android/hxjlib/dfu_release.aar" target-dir="libs" />
-        <source-file src="src/android/hxjlib/bleoad-release.aar" target-dir="libs" />
+        <source-file src="src/android/libs/hxjlib/classes.jar" target-dir="libs" />
+        <source-file src="src/android/libs/hxjlib/jdk9-deps-1.0.jar" target-dir="libs" />
+        <source-file src="src/android/libs/hxjlib/dfu_release.aar" target-dir="libs" />
+        <source-file src="src/android/libs/hxjlib/bleoad-release.aar" target-dir="libs" />
 
         <!-- External library dependency -->
         <framework src="no.nordicsemi.android.support.v18:scanner:1.6.0" />
