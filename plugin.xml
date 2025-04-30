@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin id="cordova-plugin-baseconnect" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>BaseConnect</name>
+    <description>BLE Lock Scanner via HXJ SDK</description>
+    <license>MIT</license>
+
+    <platform name="android">
+        <!-- Permissions -->
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.BLUETOOTH" />
+            <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+            <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+            <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+        </config-file>
+
+        <!-- Include AAR and JAR dependencies -->
+        <framework src="src/android/libs/hxjblinklibrary-release.aar" custom="true" type="aar" />
+        <framework src="src/android/libs/bleoad-release.aar" custom="true" type="aar" />
+        <framework src="src/android/libs/dfu_release.aar" custom="true" type="aar" />
+        <framework src="src/android/libs/jdk9-deps-1.0.jar" custom="true" type="jar" />
+
+        <framework src="no.nordicsemi.android.support.v18:scanner:1.6.0" />
+
+        <!-- Java sources -->
+        <source-file src="src/android/org/jsndev/baseconnect/BaseConnectPlugin.java" target-dir="src/android/org/jsndev/baseconnect" />
+        <source-file src="src/android/org/jsndev/baseconnect/utils/MyBleClient.java" target-dir="src/android/org/jsndev/baseconnect/utils" />
+    </platform>
+
+
+    <js-module src="www/baseconnect.js" name="BaseConnect">
+        <clobbers target="cordova.plugins.BaseConnect" />
+    </js-module>
+</plugin>

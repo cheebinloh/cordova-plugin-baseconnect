@@ -1,0 +1,18 @@
+{
+  "name": "cordova-plugin-baseconnect",
+  "version": "1.0.0",
+  "description": "BLE Lock Plugin using HXJ SDK",
+  "cordova": {
+    "id": "cordova-plugin-baseconnect",
+    "platforms": ["android"]
+  },
+  "keywords": [
+    "cordova",
+    "bluetooth",
+    "ble",
+    "plugin",
+    "lock"
+  ],
+  "author": "Jayson Loh",
+  "license": "MIT"
+}
