@@ -18,7 +18,7 @@
         <framework src="src/android/libs/hxjblinklibrary-release.aar" custom="true" type="aar" parent="app" />
         <framework src="src/android/libs/bleoad-release.aar" custom="true" type="aar" parent="app" />
         <framework src="src/android/libs/dfu_release.aar" custom="true" type="aar" parent="app" />
-        <framework src="src/android/libs/jdk9-deps-1.0.jar" custom="true" type="jar" />
+        <framework src="src/android/libs/jdk9-deps-1.0.jar" custom="true" type="jar" parent="app" />
 
         <framework src="no.nordicsemi.android.support.v18:scanner:1.6.0" />
 
