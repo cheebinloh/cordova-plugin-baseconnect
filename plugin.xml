@@ -15,14 +15,16 @@
         </config-file>
 
         <!-- Include AAR and JAR dependencies -->
-        <framework src="src/android/libs/hxjblinklibrary-release.aar" custom="true" type="aar" parent="app" />
+        
         <framework src="src/android/libs/bleoad-release.aar" custom="true" type="aar" parent="app" />
         <framework src="src/android/libs/dfu_release.aar" custom="true" type="aar" parent="app" />
         <framework src="src/android/libs/jdk9-deps-1.0.jar" custom="true" type="jar" parent="app" />
-
         <framework src="no.nordicsemi.android.support.v18:scanner:1.6.0" />
 
         <!-- Java sources -->
+        <source-file src="src/android/libs/hxjlib/classes.jar" target-dir="libs" />
+        <source-file src="src/android/libs/dfu_release.aar" target-dir="libs" />
+        <source-file src="src/android/libs/jdk9-deps-1.0.jar" target-dir="libs" />
         <source-file src="src/android/org/jsndev/baseconnect/BaseConnectPlugin.java" target-dir="src/android/org/jsndev/baseconnect" />
         <source-file src="src/android/org/jsndev/baseconnect/utils/MyBleClient.java" target-dir="src/android/org/jsndev/baseconnect/utils" />
     </platform>
