@@ -2,7 +2,7 @@ package org.jsndev.baseconnect.utils;
 
 import android.content.Context;
 import android.util.Log;
-
+import androidx.annotation.NonNull;
 import com.example.hxjblinklibrary.blinkble.profile.client.HxjBleClient;
 import com.example.hxjblinklibrary.blinkble.profile.client.LinkCallBack;
 import android.bluetooth.BluetoothDevice;
@@ -27,69 +27,38 @@ public class MyBleClient extends HxjBleClient {
     private void initCallbacks() {
         setLinkCallBack(new LinkCallBack() {
             @Override
-            public void onDeviceReady(BluetoothDevice device) {
-                Log.d(TAG, "Device ready: " + device.getAddress());
-            }
-
-            @Override
             public void onDeviceConnected(@NonNull BluetoothDevice device) {
                 Log.d(TAG, "Device connected: " + device.getAddress());
             }
 
             @Override
-            public void onConnecting(String mac) {
-                Log.d("MyBleClient", "Connecting to " + mac);
+            public void onDeviceReady(@NonNull BluetoothDevice device) {
+                Log.d(TAG, "Device ready: " + device.getAddress());
             }
 
             @Override
-            public void onConnected(String mac) {
-                Log.d("MyBleClient", "Connected to " + mac);
+            public void onDeviceDisconnected(@NonNull BluetoothDevice device) {
+                Log.d(TAG, "Device disconnected: " + device.getAddress());
             }
 
             @Override
-            public void onDisconnected(String mac) {
-                Log.d("MyBleClient", "Disconnected from " + mac);
+            public void onLinkLossOccurred(@NonNull BluetoothDevice device) {
+                Log.w(TAG, "Link lost: " + device.getAddress());
             }
 
             @Override
-            public void onConnectFailed(String mac, Throwable throwable) {
-                Log.e("MyBleClient", "Failed to connect to " + mac, throwable);
-            }
-
-            @Override
-            public void onServiceDiscoverFail(String mac) {
-                Log.e("MyBleClient", "Service discovery failed for " + mac);
-            }
-
-            @Override
-            public void onServiceDiscoverSucceed(String mac) {
-                Log.d("MyBleClient", "Service discovery succeeded for " + mac);
-            }
-
-            @Override
-            public void onDeviceNotSupported(BluetoothDevice device) {
-                Log.e("LinkCallBack", "Device not supported: " + device.getAddress());
+            public void onDeviceNotSupported(@NonNull BluetoothDevice device) {
+                Log.e(TAG, "Device not supported: " + device.getAddress());
             }
 
             @Override
             public void onError(@NonNull BluetoothDevice device, @NonNull String message, int errorCode) {
-                Log.e(TAG, "Error on device " + device.getAddress() + ": " + message + " (code " + errorCode + ")");
+                Log.e(TAG, "Error: " + message + " (code: " + errorCode + ")");
             }
 
             @Override
             public void onEventReport(String uuid, int code, String message) {
                 Log.d(TAG, "Event report - UUID: " + uuid + ", Code: " + code + ", Message: " + message);
-            }
-
-            @Override
-            public void onLinkLossOccurred(@NonNull BluetoothDevice device) {
-                Log.w(TAG, "Link loss: " + device.getAddress());
-            }
-
-            @Override
-            public void onDeviceDisconnected(BluetoothDevice device) {
-                Log.d(TAG, "Device disconnected: " + device.getAddress());
-
             }
         });
     }
