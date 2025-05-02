@@ -55,8 +55,13 @@ public class MyBleClient extends HxjBleClient {
             }
 
             @Override
+            public void onDeviceNotSupported(BluetoothDevice device) {
+                Log.e(TAG, "Device not supported: " + device.getAddress());
+            }
+
+            @Override
             public void onError(BluetoothDevice device, String message, int code) {
-                Log.e("MyBleClient", "Error: " + message + " (code " + code + ")");
+                Log.e(TAG, "Error: " + message + ", code: " + code);
             }
 
             @Override
