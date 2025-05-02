@@ -4,7 +4,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.util.Log;
 
-import com.example.hxjblinklibrary.blinkble.scanner.HxBluetoothDevice;
+import com.example.hxjblinklibrary.blinkble.scanner.HxjBluetoothDevice;
 import com.example.hxjblinklibrary.blinkble.entity.Response;
 import com.example.hxjblinklibrary.blinkble.entity.requestaction.OpenLockAction;
 import com.example.hxjblinklibrary.blinkble.entity.reslut.HxBLEUnlockResult;
@@ -53,7 +53,7 @@ public class BaseConnectPlugin extends CordovaPlugin {
             }
 
             @Override
-            public void onScanResult(HxBluetoothDevice device, int rssi, byte[] scanRecord) {
+            public void onScanResult(HxjBluetoothDevice device, int rssi, byte[] scanRecord) {
                 try {
                     JSONObject deviceJson = new JSONObject();
                     deviceJson.put("name", device.getName());
@@ -68,7 +68,7 @@ public class BaseConnectPlugin extends CordovaPlugin {
             }
 
             @Override
-            public void onScanComplete(List<HxBluetoothDevice> devices) {
+            public void onScanComplete(List<HxjBluetoothDevice> devices) {
                 Log.d(TAG, "Scan complete");
             }
         }, scanType);
