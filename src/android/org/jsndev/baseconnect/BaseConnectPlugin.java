@@ -76,7 +76,7 @@ public class BaseConnectPlugin extends CordovaPlugin {
 
     private void openLock(String macAddress, CallbackContext callbackContext) {
         Context context = this.cordova.getContext();
-        
+
         BlinkyAuthAction authAction = new BlinkyAuthAction.Builder()
             .mac(macAddress.toLowerCase()) // SDK expects lowercase MAC
             .keyGroupId(900).build();
@@ -88,13 +88,29 @@ public class BaseConnectPlugin extends CordovaPlugin {
             @Override
             public void onResponse(Response<HxBLEUnlockResult> response) {
                 try {
+                    Class<?> responseClass = response.getClass();
+
+                    // Access private fields using reflection
+                    java.lang.reflect.Field codeField = responseClass.getDeclaredField("code");
+                    java.lang.reflect.Field messageField = responseClass.getDeclaredField("message");
+                    java.lang.reflect.Field dataField = responseClass.getDeclaredField("data");
+
+                    codeField.setAccessible(true);
+                    messageField.setAccessible(true);
+                    dataField.setAccessible(true);
+
+                    int code = (int) codeField.get(response);
+                    String message = (String) messageField.get(response);
+                    Object data = dataField.get(response);
+
                     JSONObject result = new JSONObject();
-                    result.put("code", response.code);
-                    result.put("message", response.message);
-                    result.put("data", response.data  != null ? response.data.toString() : JSONObject.NULL);
+                    result.put("code", code);
+                    result.put("message", message);
+                    result.put("data", data != null ? data.toString() : JSONObject.NULL);
+
                     callbackContext.success(result);
-                } catch (JSONException e) {
-                    callbackContext.error("Failed to parse open lock result");
+                } catch (Exception e) {
+                    callbackContext.error("Reflection failed: " + e.getMessage());
                 }
             }
 
@@ -104,4 +120,5 @@ public class BaseConnectPlugin extends CordovaPlugin {
             }
         });
     }
+
 }
