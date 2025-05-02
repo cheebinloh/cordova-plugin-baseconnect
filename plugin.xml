@@ -15,7 +15,7 @@
         </config-file>
 
         <!-- Java Dependencies from hxjlib folder -->
-        <framework src="src/android/libs/hxjsdk.jar" />
+        <source-file src="src/android/libs/hxjsdk.jar" target-dir="libs" />
 
         <!-- External library dependency -->
         <framework src="no.nordicsemi.android.support.v18:scanner:1.6.0" />
