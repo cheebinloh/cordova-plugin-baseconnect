@@ -4,7 +4,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.util.Log;
 
-import com.example.hxjblinklibrary.blinkble.scanner.HxjBluetoothDevice;
+import com.example.hxjblinklibrary.blinkble.scanner.HxBluetoothDevice;
 import com.example.hxjblinklibrary.blinkble.entity.Response;
 import com.example.hxjblinklibrary.blinkble.entity.requestaction.OpenLockAction;
 import com.example.hxjblinklibrary.blinkble.entity.reslut.HxBLEUnlockResult;
