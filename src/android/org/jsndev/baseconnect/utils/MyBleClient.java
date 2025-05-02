@@ -70,6 +70,11 @@ public class MyBleClient extends HxjBleClient {
                 // Example: log or handle BLE event
                 Log.d("MyBleClient", "onEventReport: mac=" + mac + ", code=" + code + ", message=" + message);
             }
+
+            @Override
+            public void onLinkLossOccurred(BluetoothDevice device) {
+                // handle disconnection or link loss
+            }
         });
     }
 }
