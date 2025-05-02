@@ -75,6 +75,11 @@ public class MyBleClient extends HxjBleClient {
             public void onLinkLossOccurred(BluetoothDevice device) {
                 // handle disconnection or link loss
             }
+
+            @Override
+            public void onDeviceDisconnected(BluetoothDevice device) {
+                Log.d(TAG, "Device disconnected: " + device.getAddress());
+            }
         });
     }
 }
