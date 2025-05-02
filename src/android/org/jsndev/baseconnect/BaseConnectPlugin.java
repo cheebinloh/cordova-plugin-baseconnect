@@ -74,16 +74,16 @@ public class BaseConnectPlugin extends CordovaPlugin {
     private void openLock(String macAddress, CallbackContext callbackContext) {
         Context context = this.cordova.getContext();
         OpenLockAction actionObj = new OpenLockAction();
-        actionObj.setTargetMacAddress(macAddress);
+        actionObj.setMac(macAddress);
 
         MyBleClient.getInstance(context).openLock(actionObj, new FunCallback<HxBLEUnlockResult>() {
             @Override
             public void onResponse(Response<HxBLEUnlockResult> response) {
                 try {
                     JSONObject result = new JSONObject();
-                    result.put("code", response.code);
-                    result.put("message", response.message);
-                    result.put("data", response.data != null ? response.data.toString() : JSONObject.NULL);
+                    result.put("code", response.getCode());
+                    result.put("message", response.getMessage());
+                    result.put("data", response.getData() != null ? response.getData().toString() : JSONObject.NULL);
                     callbackContext.success(result);
                 } catch (JSONException e) {
                     callbackContext.error("Failed to parse open lock result");

@@ -55,6 +55,11 @@ public class MyBleClient extends HxjBleClient {
             }
 
             @Override
+            public void onError(BluetoothDevice device, String message, int code) {
+                Log.e("MyBleClient", "Error: " + message + " (code " + code + ")");
+            }
+
+            @Override
             public void onEventReport(String mac, int code, String message) {
                 // Example: log or handle BLE event
                 Log.d("MyBleClient", "onEventReport: mac=" + mac + ", code=" + code + ", message=" + message);
