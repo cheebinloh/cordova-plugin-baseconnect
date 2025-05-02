@@ -15,8 +15,8 @@
         </config-file>
 
         <!-- Java Dependencies from hxjlib folder -->
-        <source-file src="src/android/libs/hxjlib/classes.jar" target-dir="libs" />
-<!--         <source-file src="src/android/libs/hxjlib/jdk9-deps-1.0.jar" target-dir="libs" />
+        <framework src="src/android/libs/hxjlib/classes.jar" custom="true" />
+<!--    <source-file src="src/android/libs/hxjlib/jdk9-deps-1.0.jar" target-dir="libs" />
         <framework src="src/android/libs/hxjlib/bleoad-release.aar" custom="true" type="aar" />
         <framework src="src/android/libs/hxjlib/dfu_release.aar" custom="true" type="aar" /> -->
 
