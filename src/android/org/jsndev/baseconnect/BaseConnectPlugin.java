@@ -13,7 +13,7 @@ import com.example.hxjblinklibrary.blinkble.scanner.HxjScanner;
 import com.example.hxjblinklibrary.blinkble.scanner.HxjScanCallback;
 
 import com.example.hxjblinklibrary.blinkble.entity.requestaction.BlinkyAuthAction;
-import com.example.hxjblinklibrary.blinkble.core.MyBleClient;
+import android.org.jsndev.baseconnect.utils.MyBleClient;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -79,9 +79,7 @@ public class BaseConnectPlugin extends CordovaPlugin {
         
         BlinkyAuthAction authAction = new BlinkyAuthAction.Builder()
             .mac(macAddress.toLowerCase()) // SDK expects lowercase MAC
-            .keyGroupId(900)
-            .bleProtocolVer(12)        // Replace if needed
-            .build();
+            .keyGroupId(900).build();
 
         OpenLockAction actionObj = new OpenLockAction();
         actionObj.setBaseAuthAction(authAction);

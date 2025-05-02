@@ -79,7 +79,6 @@ public class MyBleClient extends HxjBleClient {
             @Override
             public void onDeviceDisconnected(BluetoothDevice device) {
                 Log.d(TAG, "Device disconnected: " + device.getAddress());
+
             }
-        });
-    }
 }
