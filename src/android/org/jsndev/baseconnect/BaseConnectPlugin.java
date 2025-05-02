@@ -43,7 +43,10 @@ public class BaseConnectPlugin extends CordovaPlugin {
 
     private void startScan() {
         Context context = this.cordova.getContext();
-        HxjScanner.getInstance().startScan(context, new HxjScanCallback() {
+        long scanTimeout = 10000; // 10 seconds
+        int scanType = 1; // check SDK doc for scan mode: 0 = all, 1 = BLE, etc.
+
+        HxjScanner.getInstance().startScan(scanTimeout, context, new HxjScanCallback() {
             @Override
             public void onScanStart() {
                 Log.d(TAG, "Scan started");
@@ -68,7 +71,7 @@ public class BaseConnectPlugin extends CordovaPlugin {
             public void onScanComplete(List<HxBluetoothDevice> devices) {
                 Log.d(TAG, "Scan complete");
             }
-        });
+        }, scanType);
     }
 
     private void openLock(String macAddress, CallbackContext callbackContext) {
