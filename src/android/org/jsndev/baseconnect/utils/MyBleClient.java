@@ -32,6 +32,11 @@ public class MyBleClient extends HxjBleClient {
             }
 
             @Override
+            public void onDeviceConnected(@NonNull BluetoothDevice device) {
+                Log.d(TAG, "Device connected: " + device.getAddress());
+            }
+
+            @Override
             public void onConnecting(String mac) {
                 Log.d("MyBleClient", "Connecting to " + mac);
             }
@@ -67,19 +72,18 @@ public class MyBleClient extends HxjBleClient {
             }
 
             @Override
-            public void onError(BluetoothDevice device, String message, int code) {
-                Log.e("LinkCallBack", "Error: " + message + " Code: " + code);
+            public void onError(@NonNull BluetoothDevice device, @NonNull String message, int errorCode) {
+                Log.e(TAG, "Error on device " + device.getAddress() + ": " + message + " (code " + errorCode + ")");
             }
 
             @Override
-            public void onEventReport(String mac, int code, String message) {
-                // Example: log or handle BLE event
-                Log.d("MyBleClient", "onEventReport: mac=" + mac + ", code=" + code + ", message=" + message);
+            public void onEventReport(String uuid, int code, String message) {
+                Log.d(TAG, "Event report - UUID: " + uuid + ", Code: " + code + ", Message: " + message);
             }
 
             @Override
-            public void onLinkLossOccurred(BluetoothDevice device) {
-                // handle disconnection or link loss
+            public void onLinkLossOccurred(@NonNull BluetoothDevice device) {
+                Log.w(TAG, "Link loss: " + device.getAddress());
             }
 
             @Override
