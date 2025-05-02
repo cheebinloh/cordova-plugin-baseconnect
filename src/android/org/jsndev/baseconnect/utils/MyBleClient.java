@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.example.hxjblinklibrary.blinkble.profile.client.HxjBleClient;
 import com.example.hxjblinklibrary.blinkble.profile.client.LinkCallBack;
+import android.bluetooth.BluetoothDevice;
 
 public class MyBleClient extends HxjBleClient {
 
@@ -56,12 +57,12 @@ public class MyBleClient extends HxjBleClient {
 
             @Override
             public void onDeviceNotSupported(BluetoothDevice device) {
-                Log.e(TAG, "Device not supported: " + device.getAddress());
+                Log.e("LinkCallBack", "Device not supported: " + device.getAddress());
             }
 
             @Override
             public void onError(BluetoothDevice device, String message, int code) {
-                Log.e(TAG, "Error: " + message + ", code: " + code);
+                Log.e("LinkCallBack", "Error: " + message + " Code: " + code);
             }
 
             @Override

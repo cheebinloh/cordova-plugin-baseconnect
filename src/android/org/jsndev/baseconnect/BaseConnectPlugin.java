@@ -18,7 +18,6 @@ import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import android.bluetooth.BluetoothDevice;
 
 import java.util.List;
 
@@ -78,9 +77,7 @@ public class BaseConnectPlugin extends CordovaPlugin {
         BlinkyAuthAction authAction = new BlinkyAuthAction.Builder()
             .mac(macAddress.toLowerCase()) // SDK expects lowercase MAC
             .keyGroupId(900)
-            .authCode("yourAuthCode") // Replace with stored or retrieved value
-            .dnaKey("yourDnaKey")     // Replace with stored or retrieved value
-            .bleProtocolVer(1)        // Replace if needed
+            .bleProtocolVer(12)        // Replace if needed
             .build();
 
         OpenLockAction actionObj = new OpenLockAction();
