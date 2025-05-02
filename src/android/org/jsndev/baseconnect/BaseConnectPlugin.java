@@ -47,12 +47,10 @@ public class BaseConnectPlugin extends CordovaPlugin {
         int scanType = 1; // check SDK doc for scan mode: 0 = all, 1 = BLE, etc.
 
         HxjScanner.getInstance().startScan(scanTimeout, context, new HxjScanCallback() {
-            @Override
             public void onScanStart() {
                 Log.d(TAG, "Scan started");
             }
 
-            @Override
             public void onScanResult(HxjBluetoothDevice device, int rssi, byte[] scanRecord) {
                 try {
                     JSONObject deviceJson = new JSONObject();
@@ -67,7 +65,6 @@ public class BaseConnectPlugin extends CordovaPlugin {
                 }
             }
 
-            @Override
             public void onScanComplete(List<HxjBluetoothDevice> devices) {
                 Log.d(TAG, "Scan complete");
             }
@@ -77,16 +74,16 @@ public class BaseConnectPlugin extends CordovaPlugin {
     private void openLock(String macAddress, CallbackContext callbackContext) {
         Context context = this.cordova.getContext();
         OpenLockAction actionObj = new OpenLockAction();
-        actionObj.setMac(macAddress);
+        actionObj.setTargetMacAddress(macAddress);
 
         MyBleClient.getInstance(context).openLock(actionObj, new FunCallback<HxBLEUnlockResult>() {
             @Override
             public void onResponse(Response<HxBLEUnlockResult> response) {
                 try {
                     JSONObject result = new JSONObject();
-                    result.put("code", response.getCode());
-                    result.put("message", response.getMessage());
-                    result.put("data", response.getData() != null ? response.getData().toString() : JSONObject.NULL);
+                    result.put("code", response.code);
+                    result.put("message", response.message);
+                    result.put("data", response.data != null ? response.data.toString() : JSONObject.NULL);
                     callbackContext.success(result);
                 } catch (JSONException e) {
                     callbackContext.error("Failed to parse open lock result");

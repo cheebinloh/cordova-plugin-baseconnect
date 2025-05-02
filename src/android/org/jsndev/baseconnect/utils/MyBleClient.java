@@ -53,6 +53,12 @@ public class MyBleClient extends HxjBleClient {
             public void onServiceDiscoverSucceed(String mac) {
                 Log.d("MyBleClient", "Service discovery succeeded for " + mac);
             }
+
+            @Override
+            public void onEventReport(String mac, int code, String message) {
+                // Example: log or handle BLE event
+                Log.d("MyBleClient", "onEventReport: mac=" + mac + ", code=" + code + ", message=" + message);
+            }
         });
     }
 }
