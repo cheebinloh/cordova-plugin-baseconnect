@@ -81,4 +81,6 @@ public class MyBleClient extends HxjBleClient {
                 Log.d(TAG, "Device disconnected: " + device.getAddress());
 
             }
+        });
+    }
 }
