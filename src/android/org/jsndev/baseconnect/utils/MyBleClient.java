@@ -10,6 +10,7 @@ import android.bluetooth.BluetoothDevice;
 public class MyBleClient extends HxjBleClient {
 
     private static MyBleClient instance;
+    private static final String TAG = "MyBleClient";
 
     private MyBleClient(Context context) {
         super(context);
@@ -25,6 +26,11 @@ public class MyBleClient extends HxjBleClient {
 
     private void initCallbacks() {
         setLinkCallBack(new LinkCallBack() {
+            @Override
+            public void onDeviceReady(BluetoothDevice device) {
+                Log.d(TAG, "Device ready: " + device.getAddress());
+            }
+
             @Override
             public void onConnecting(String mac) {
                 Log.d("MyBleClient", "Connecting to " + mac);

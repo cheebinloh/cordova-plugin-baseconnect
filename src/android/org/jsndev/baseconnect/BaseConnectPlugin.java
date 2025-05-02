@@ -13,7 +13,7 @@ import com.example.hxjblinklibrary.blinkble.scanner.HxjScanner;
 import com.example.hxjblinklibrary.blinkble.scanner.HxjScanCallback;
 
 import com.example.hxjblinklibrary.blinkble.entity.requestaction.BlinkyAuthAction;
-import android.org.jsndev.baseconnect.utils.MyBleClient;
+import org.jsndev.baseconnect.utils.MyBleClient;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -89,9 +89,9 @@ public class BaseConnectPlugin extends CordovaPlugin {
             public void onResponse(Response<HxBLEUnlockResult> response) {
                 try {
                     JSONObject result = new JSONObject();
-                    result.put("code", response.getCode());
-                    result.put("message", response.getMessage());
-                    result.put("data", response.getBody() != null ? response.getBody().toString() : JSONObject.NULL);
+                    result.put("code", response.code);
+                    result.put("message", response.message);
+                    result.put("data", response.data  != null ? response.data.toString() : JSONObject.NULL);
                     callbackContext.success(result);
                 } catch (JSONException e) {
                     callbackContext.error("Failed to parse open lock result");
