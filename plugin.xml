@@ -9,10 +9,10 @@
         <config-file target="AndroidManifest.xml" parent="/manifest">
             <uses-permission android:name="android.permission.BLUETOOTH" />
             <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
             <uses-permission android:name="android.permission.BLUETOOTH_SCAN" tools:targetApi="31" />
             <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" tools:targetApi="31" />
-            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+            <uses-feature android:name="android.hardware.bluetooth_le" android:required="true" />
         </config-file>
 
         <edit-config file="AndroidManifest.xml" target="/manifest/application">
@@ -28,6 +28,8 @@
         <!-- Java source code -->
         <source-file src="src/android/org/jsndev/baseconnect/BaseConnectPlugin.java" target-dir="src/android/org/jsndev/baseconnect" />
         <source-file src="src/android/org/jsndev/baseconnect/utils/MyBleClient.java" target-dir="src/android/org/jsndev/baseconnect/utils" />
+
+        <hook type="after_prepare" src="hooks/after_prepare/remove-manifest-package.js" />
     </platform>
 
 

@@ -48,7 +48,6 @@ public class BaseConnectPlugin extends CordovaPlugin {
         Context context = this.cordova.getContext();
         long scanTimeout = 10000; // 10 seconds
         int scanType = 1; // check SDK doc for scan mode: 0 = all, 1 = BLE, etc.
-
         HxjScanner.getInstance().startScan(scanTimeout, context, new HxjScanCallback() {
             public void onScanStart() {
                 Log.d(TAG, "Scan started");
