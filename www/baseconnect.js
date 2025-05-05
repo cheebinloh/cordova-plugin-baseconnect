@@ -1,7 +1,9 @@
 var exec = require('cordova/exec');
 
-exports.scan = function (success, error) {
-    exec(success, error, 'BaseConnect', 'scan', []);
+exports.scan = function(success, error) {
+    exec(success, error, "BaseConnectPlugin", "scan", []);
 };
 
-// Add more methods like connect, openLock, etc.
+exports.openLock = function(mac, success, error) {
+    exec(success, error, "BaseConnectPlugin", "openLock", [mac]);
+};
