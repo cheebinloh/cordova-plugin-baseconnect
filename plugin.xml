@@ -14,9 +14,6 @@
             <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
             <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
             <uses-feature android:name="android.hardware.bluetooth_le" android:required="true" />
-            <feature name="BaseConnectPlugin">
-              <param name="android-package" value="org.jsndev.baseconnect.BaseConnectPlugin" />
-            </feature>
         </config-file>
 
         <edit-config file="AndroidManifest.xml" target="/manifest/application">
