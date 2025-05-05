@@ -38,6 +38,12 @@
         <!-- <source-file src="src/android/org/jsndev/baseconnect/utils/MyBleClient.java" target-dir="src/android/org/jsndev/baseconnect/utils" /> -->
         <source-file src="src/android/org/jsndev/baseconnect/utils/MyBleClient.java" target-dir="app/src/main/java/org/jsndev/baseconnect/utils" />
 
+
+        <js-module src="www/baseconnect.js" name="BaseConnect">
+            <clobbers target="BaseConnect" />
+        </js-module>
+
+
         <hook type="after_prepare" src="hooks/after_prepare/remove-manifest-package.js" />
     </platform>
 

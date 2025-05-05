@@ -1,9 +1,18 @@
 var exec = require('cordova/exec');
 
-exports.scan = function(success, error) {
-    exec(success, error, "BaseConnectPlugin", "scan", []);
+var BaseConnect = {
+    scan: function(successCallback, errorCallback) {
+        exec(successCallback, errorCallback, "BaseConnectPlugin", "scan", []);
+    },
+
+    openLock: function(macAddress, successCallback, errorCallback) {
+        exec(successCallback, errorCallback, "BaseConnectPlugin", "openLock", [macAddress]);
+    }
 };
 
-exports.openLock = function(mac, success, error) {
-    exec(success, error, "BaseConnectPlugin", "openLock", [mac]);
-};
+module.exports = BaseConnect;
+
+// Optional: expose as cordova.plugins.BaseConnect
+if (typeof cordova !== 'undefined' && cordova.plugins) {
+    cordova.plugins.BaseConnect = BaseConnect;
+}
