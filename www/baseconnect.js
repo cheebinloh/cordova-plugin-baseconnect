@@ -2,6 +2,7 @@ var exec = require('cordova/exec');
 
 var BaseConnect = {
     scan: function(successCallback, errorCallback) {
+        console.log("[BaseConnect.js] Plugin loaded");
         exec(successCallback, errorCallback, "BaseConnectPlugin", "scan", []);
     },
 
