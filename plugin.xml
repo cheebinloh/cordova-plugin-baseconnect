@@ -40,7 +40,7 @@
 
 
         <js-module src="www/baseconnect.js" name="BaseConnect">
-            <clobbers target="BaseConnect" />
+            <clobbers target="cordova.plugins.BaseConnect" />
         </js-module>
 
 

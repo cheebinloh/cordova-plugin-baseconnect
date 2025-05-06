@@ -33,10 +33,12 @@ public class BaseConnectPlugin extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if (action.equals("scan")) {
+            Log.d(TAG, "Scan method called");
             this.scanCallback = callbackContext;
             startScan();
             return true;
         } else if (action.equals("openLock")) {
+            Log.d(TAG, "openlock method called");
             String macAddress = args.getString(0);
             openLock(macAddress, callbackContext);
             return true;
@@ -46,7 +48,7 @@ public class BaseConnectPlugin extends CordovaPlugin {
 
     private void startScan() {
         Context context = this.cordova.getContext();
-        long scanTimeout = 10000; // 10 seconds
+        long scanTimeout = 5000; // 10 seconds
         int scanType = 1; // check SDK doc for scan mode: 0 = all, 1 = BLE, etc.
         HxjScanner.getInstance().startScan(scanTimeout, context, new HxjScanCallback() {
             public void onScanStart() {
