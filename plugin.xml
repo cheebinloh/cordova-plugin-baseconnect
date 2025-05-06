@@ -33,6 +33,7 @@
         <framework src="no.nordicsemi.android.support.v18:scanner:1.6.0" />
 
         <!-- Java source code -->
+        <source-file src="src/android/BaseConnectPlugin.java" target-dir="src/org/jsndev/baseconnect" />
         <!-- <source-file src="src/android/org/jsndev/baseconnect/BaseConnectPlugin.java" target-dir="src/android/org/jsndev/baseconnect" /> -->
         <source-file src="src/android/org/jsndev/baseconnect/BaseConnectPlugin.java" target-dir="app/src/main/java/org/jsndev/baseconnect" />
         <!-- <source-file src="src/android/org/jsndev/baseconnect/utils/MyBleClient.java" target-dir="src/android/org/jsndev/baseconnect/utils" /> -->

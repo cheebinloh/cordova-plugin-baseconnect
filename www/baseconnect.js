@@ -1,4 +1,4 @@
-console.log("[BaseConnect] JS file loaded ✅");
+console.log("[BaseConnect] JS file loaded");
 
 var exec = require('cordova/exec');
 
